@@ -1,0 +1,53 @@
+download
+convert
+
+Syntax:
+
+./tubeyrtc -d/c [-ld/l//link] [name/list] [format]
+
+d: descargar            		}
+c: convertir            		 } Fx principales 
+dc: descargar convertir 		}
+ld: lista, descargar solamente (3)      }
+lc: lista y convertir (archivos)	}
+ldc: lista, descargar, convertir         } Fx Listas
+
+format: (4)		  	
+
+link: (3) } 
+
+list: 
+===========================================================================
+Caso 0: Descargar solamente (3)
+     ./tubeyrtc -d link name
+link: link descarga.
+name: nombre.
+
+Caso 1: Convertir solamente (4)
+     ./tubeyrtc -c file name format
+file: archivo a convertir
+name: nombre.
+format: formato a convertir
+
+Caso 2: Descargar y convertir (4)
+     ./tubeyrtc -dc link name format
+link: link de descarga
+name: nombre.
+format: formato.
+
+/////////////////Listas///////////////////
+Caso 3: Descargar lista solamente (3)
+     ./tubeyrtc -ld lista namel
+lista: lista de links
+
+Caso 4: Convertir lista de archivos (3/4)
+     ./tubeyrtc -lc lista format [namel]
+lista: lista de archivos.
+format: formato a convertir.
+namel: nombre de la carpeta (lista).
+
+Caso 5: Descargar, convertir listas (3/4)
+     ./tubeyrtc -ldc lista format [namel]
+lista: lista de links.
+format: formato a convertir.
+namel: nombre de la carpeta (lista).
