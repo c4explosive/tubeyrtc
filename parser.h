@@ -10,6 +10,7 @@ typedef struct _media
     int cant;
 }media;
 
+
 media * crmedia()
 {
     int i;
@@ -25,7 +26,8 @@ media * crmedia()
     return mdd;
 }
 
-media * parser(int argc, char* argv[])
+//TODO: Diferentes caracteres de espaciado, 0x20, 0x9, etc.
+media * parser(char* argvn)
 {
     FILE * f1;
     media * md1=crmedia();
@@ -41,7 +43,7 @@ media * parser(int argc, char* argv[])
     for(i=0;i<NN;i++)
 	names[i]=malloc(200*sizeof(char));
     t=getcwd(t,800*sizeof(t)); //Obtener ruta actual de trabajo.
-    sprintf(name,"%s/%s",t,argv[1]);
+    sprintf(name,"%s/%s",t,argvn);
     f1=fopen(name,"r");
     i=j=k=l=0;
     while(1)
@@ -87,6 +89,13 @@ media * parser(int argc, char* argv[])
 	md1->cant=ii;
     	return md1;
     }
+}
+
+char * cwdf ()
+{
+    char * t = malloc(200*sizeof(char));
+    t=getcwd(t,800*sizeof(t));
+    return t;
 }
 /*
 int main(int argc,char* argv[])
