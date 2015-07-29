@@ -42,7 +42,9 @@ int veroa(int argc,int op) //Verificar argumentos y cantidad argumentos; 1 si es
 
 int main(int argc, char * argv[])
 {
-    if(veroa(argc-1,opc(argv[1])))
+    if (argc ==1)
+	return 1;
+    else if(veroa(argc-1,opc(argv[1])))
     {
 	switch(opc(argv[1]))
 	{
