@@ -54,14 +54,22 @@ void lconvon(char * lname, char * format, char * namel) //Caso 4
     	sprintf(archh,"../%s.webm",mds->names[i]);
     	convon(archh,mds->names[i],format);
     }
-
 }
+
+void ldconv(char * lname,char * format, char * namel) //Caso 5
+{
+    ldowon(lname);
+    lconvon(lname,format,namel);
+}
+
 int main(int argc, char* argv[])
 {
     //dowon(argv[1],argv[2]); //Caso 0
     //convon(argv[1],argv[2],argv[3]); //Caso 1
     //dconv(argv[1],argv[2],argv[3]);  //Caso 2
     //ldowon(argv[1]); //Caso 3
-    lconvon(argv[1],argv[2],argv[3]); //Caso 4
+    //lconvon(argv[1],argv[2],argv[3]); //Caso 4
+    //ldconv(argv[1],argv[2],argv[3]); //Caso 5
+    ldebug(argv[1]);
     return 0;
 }

@@ -26,6 +26,15 @@ media * crmedia()
     return mdd;
 }
 
+int ispace(char cc)
+{
+    switch(cc)
+    {
+	case 0x9: case 0x20: return 1; break;
+	default: return 0;
+    }
+}
+
 //TODO: Diferentes caracteres de espaciado, 0x20, 0x9, etc.
 media * parser(char* argvn)
 {
@@ -34,6 +43,7 @@ media * parser(char* argvn)
     char * t,*name,**link,**names;
     char cc;
     int i,kk,ii,j,k,l,kc=1,pass=1;
+    int spp=1;
     t=malloc(200*sizeof(t));
     link=malloc(NN*sizeof(char*)); //lista de links
     name=malloc(100*sizeof(char)); //nombre de la ruta del archivo
@@ -59,24 +69,27 @@ media * parser(char* argvn)
 	    {
 	       l=0;
 	       k++;
-	       kc=1;	
+	       kc=1;
+	       spp=1;
 	    }
 	    pass=1;
 	}
-	if(cc!=0x9 && cc!=0xa && kc==1 && pass==1)
+  	//printf("CHAR::IS: 0x%x - %d\n",cc, !ispace(cc));
+	if(!ispace(cc) && cc!=0xa && kc==1 && pass==1)
 	{
     	    link[i][j]=cc;
 	    j++;
-	} else if (cc!=0x9 && cc!=0xa && kc==0 && pass==1)
+	} else if (!ispace(cc) && cc!=0xa && kc==0 && pass==1)
 	{
 	    names[k][l]=cc;
 	    l++;
 	}
-	else if (cc == 0x9 && pass==1)
+	else if (ispace(cc) && pass==1 && spp)
 	{
 	    kc=0;
 	    j=0;
 	    i++;
+	    spp=0;
 	}	
     }
     ii=i;
@@ -97,10 +110,10 @@ char * cwdf ()
     t=getcwd(t,800*sizeof(t));
     return t;
 }
-/*
-int main(int argc,char* argv[])
+
+void ldebug(char * list)
 {
-    //media * mds=parser(argc,argv);
+    media * mds=parser(list);
     int i=0;
     char * t=malloc(200*sizeof(char));
     t=getcwd(t,800*sizeof(t));
@@ -109,4 +122,3 @@ int main(int argc,char* argv[])
 	printf("%i.) %s - %s\n",i+1,mds->link[i],mds->names[i]);
     printf("\n");
 }
-*/
