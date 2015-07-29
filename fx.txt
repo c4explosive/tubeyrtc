@@ -36,8 +36,8 @@ name: nombre.
 format: formato.
 
 /////////////////Listas///////////////////
-Caso 3: Descargar lista solamente (3)
-     ./tubeyrtc -ld lista namel
+Caso 3: Descargar lista solamente (2)
+     ./tubeyrtc -ld lista
 lista: lista de links
 
 Caso 4: Convertir lista de archivos (3/4)
